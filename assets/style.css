@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    font-family: 'Poppins';
+}
+
+body, header, footer, main, div, content, h2, h1, input, p, h3,h4,h5{
+    margin : 0;
+}
+
+header {
+    text-align: center;
+    background-color: palevioletred;
+}
+
+header nav {
+    padding : 10px;
+    color: rgb(255, 239, 239);
+}
+
+main {
+    text-align: center;
+    width: 75%;
+    margin : auto auto;
+    background-color: rgb(255, 152, 152);
+    padding: 20px;
+    border-radius: 10px;
+    margin :20px auto;
+    color : white;
+}
+
+main hr {
+    border : 2px solid rgb(255, 239, 239);
+}
+
+main div {
+    margin : 25px 0;
+}
+
+main div input {
+    border: 3px solid rgb(255, 152, 152);
+    width: 60%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+main div p{
+    font-size: 1.1rem;
+}
+
+form {
+    width : 100%;
+}
+
+form button {
+    background-color: palevioletred;
+    padding :5px;
+    border : 2px solid white;
+    color : white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+
+
+form button:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 158, 191);
+}
+
+.yearAndAuthor {
+    display: flex;
+    justify-content: space-between;
+    margin : 0;
+    padding : 0;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.yearAndAuthor div { 
+    width: 80%;
+    margin : 0 10px;
+}
+
+.yearAndAuthor div input {
+    width: 80%;
+}
+
