@@ -46,11 +46,21 @@
     </main>
     <main>
         <div class="filterBookContainer">
-            <h2>Cari Buku :</h2>
-            <input type="text" placeholder="Masukan Judul Dari Buku Yang Ingin Dicari...">
-            <button>Cari Buku...</button>
+            <h2 >Cari Buku :</h2>
+            <input id="filterInput" type="text" placeholder="Masukan Judul Dari Buku Yang Ingin Dicari...">
+            <button id="findBtn">Cari Buku...</button>
             <hr style="width: 100%;">
-            <h1 style="opacity: 35%;">Buku Tidak Ditemukan....</h1>
+            <h1 id="booksFound" style="opacity: 80%;">Buku Yang Ditemukan : 0</h1>
+            <div>
+                <table id="filterResultTable" style="width: 100%;">
+                    <tr style="width: 100%;">
+                        <th>Judul Buku</th>
+                        <th>Tahun Terbit</th>
+                        <th>Penulis</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </main>
     <main>
