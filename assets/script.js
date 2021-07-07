@@ -56,12 +56,16 @@ const renderingListBooks = () => {
         const authorEl = document.createElement('td');
         const actionBtnElOne = document.createElement('td');
         const actionBtnElTwo = document.createElement('td');
+        const actionBtnElThree = document.createElement('td');
         const btnEdit = document.createElement('button');
         const btnDelete = document.createElement('button');
+        const btnMove = document.createElement('button');
         btnEdit.innerText ='Edit';
         btnDelete.innerText = 'Delete';
+        btnMove.innerText = 'Move Book'
         actionBtnElOne.appendChild(btnEdit);
         actionBtnElTwo.appendChild(btnDelete);
+        actionBtnElThree.appendChild(btnMove);
         titleEl.innerText = book.title;
         yearEl.innerText = book.yearReleased;
         authorEl.innerText = book.author;
@@ -70,9 +74,14 @@ const renderingListBooks = () => {
         createTr.appendChild(authorEl);
         createTr.appendChild(actionBtnElOne);
         createTr.appendChild(actionBtnElTwo);
+        createTr.appendChild(actionBtnElThree);
 
         console.log(createTr)
-        finishedContainer.appendChild(createTr)
+        if (book.isComplete) {
+            finishedContainer.appendChild(createTr)
+        } else if (!book.isComplete) {
+            notFinishedContainer.appendChild(createTr)
+        }
     }
 }
 
