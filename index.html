@@ -16,26 +16,55 @@
         </nav>
     </header>
     <main>
-        <div>
+        <div class="addBookContainer">
             <h2 class="contentTitle">Books Management.</h2>
             <hr>
             <form action="">
                 <div>
                     <label for="title"><p>Judul Buku :</p></label>
-                    <input id="title" placeholder="Masukan Judul Buku..." type="text">
+                    <input id="title" required placeholder="Masukan Judul Buku..." type="text">
                 </div>
                 <div class="yearAndAuthor">
                     <div>
                         <label for="year"><p>Tahun Terbit :</p></label>
-                        <input id="year" placeholder="Masukan Tahun Terbit..." type="month">
+                        <input required id="year" placeholder="Masukan Tahun Terbit..." type="number">
                     </div>
-                    <div>
+                    <div> 
                         <label for="author"><p>Penulis :</p></label>
-                        <input id="author" placeholder="Masukan Penulis Buku..." type="text">
+                        <input required id="author" placeholder="Masukan Penulis Buku..." type="text">
                     </div>
+                    
+                </div>
+                <div class="isComplete"> 
+                    <label for="isComplete"><p>Sudah Dibaca ?</p></label>
+                    <input id="isComplete" placeholder="Masukan Penulis Buku..." type="checkbox">
                 </div>
                 <button>Masukan Buku</button>
             </form>
+        </div>
+        
+    </main>
+    <main>
+        <div class="filterBookContainer">
+            <h2>Cari Buku :</h2>
+            <input type="text" placeholder="Masukan Judul Dari Buku Yang Ingin Dicari...">
+            <button>Cari Buku...</button>
+            <hr style="width: 100%;">
+            <h1 style="opacity: 35%;">Buku Tidak Ditemukan....</h1>
+        </div>
+    </main>
+    <main>
+        <div class="listBooksContainer">
+                <h2>List Buku - Buku :</h2>
+                <hr>
+                <div class="statusBooksContainer">
+                    <div class="FinishedBookContainer">
+                        <h3>Sudah Dibaca :</h3>
+                    </div>
+                    <div class="notFinishedBookContainer">
+                        <h3>Belum Dibaca :</h3>
+                    </div>
+                </div>
         </div>
     </main>
 </body>

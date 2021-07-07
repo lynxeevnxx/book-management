@@ -52,7 +52,7 @@ form {
     width : 100%;
 }
 
-form button {
+ button {
     background-color: palevioletred;
     padding :5px;
     border : 2px solid white;
@@ -66,13 +66,15 @@ form button {
 
 
 
-form button:hover {
+ button:hover {
     transform: scale(1.1);
     background-color: rgb(255, 158, 191);
 }
 
 .yearAndAuthor {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
     margin : 0;
     padding : 0;
@@ -85,7 +87,42 @@ form button:hover {
     margin : 0 10px;
 }
 
-.yearAndAuthor div input {
-    width: 80%;
+.isComplete input{
+    transform: scale(1.5);
 }
 
+.isComplete {
+    font-weight: bold;
+}
+
+.yearAndAuthor div input {
+    width: 75%;
+}
+
+.filterBookContainer input {
+    display: block;
+    margin : 20px 0;
+
+}   
+
+.filterBookContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto auto;
+}
+
+
+.statusBooksContainer {
+    display :flex;
+    justify-content: space-evenly;
+}
+
+.statusBooksContainer div {
+    background-color: rgb(228, 118, 155);
+    padding: 15px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 15px;
+}
