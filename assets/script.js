@@ -9,7 +9,10 @@ const notFinishedContainer = document.querySelector('.notFinishedContent table')
 const inputFilterField = document.getElementById('filterInput');
 const filterTable = document.getElementById('filterResultTable');
 const findBtn = document.getElementById('findBtn');
-const booksFounded = document.getElementById('booksFound')
+const booksFounded = document.getElementById('booksFound');
+const allBookCount = document.getElementById('allBook');
+const notReadedBook = document.getElementById('notReaded');
+const readedBook = document.getElementById('readed');
 
 let bookInfo = {
     id : null,
@@ -36,7 +39,7 @@ function addTableHeader () {
         const yearTable = document.createElement('th')
         const authorTable = document.createElement('th')
         const actionTable = document.createElement('th');
-        actionTable.setAttribute('colspan', '3');
+        actionTable.setAttribute('colspan', '2');
         titleTable.innerText = 'Judul Buku';
         yearTable.innerText = 'Tahun Terbit';
         authorTable.innerText = 'Penulis';
@@ -54,16 +57,15 @@ function createChildTable (book) {
     const titleEl = document.createElement('td');
     const yearEl = document.createElement('td');
     const authorEl = document.createElement('td');
-    const actionBtnElOne = document.createElement('td');
+    
     const actionBtnElTwo = document.createElement('td');
     const actionBtnElThree = document.createElement('td');
-    const btnEdit = document.createElement('button');
+   
     const btnDelete = document.createElement('button');
     const btnMove = document.createElement('button');
 
 
 
-    btnEdit.innerText ='Edit';
     btnDelete.innerText = 'Delete';
     btnMove.innerText = 'Move Book';
 
@@ -102,7 +104,7 @@ function createChildTable (book) {
     })
 
 
-    actionBtnElOne.appendChild(btnEdit);
+
     actionBtnElTwo.appendChild(btnDelete);
     actionBtnElThree.appendChild(btnMove);  
     titleEl.innerText = book.title;
@@ -111,7 +113,7 @@ function createChildTable (book) {
     createTr.appendChild(titleEl);
     createTr.appendChild(yearEl);
     createTr.appendChild(authorEl);
-    createTr.appendChild(actionBtnElOne);
+
     createTr.appendChild(actionBtnElTwo);
     createTr.appendChild(actionBtnElThree);
 
@@ -160,6 +162,21 @@ function filterBooks () {
 }
 
 function renderingListBooks ()  {
+    let allBooks = JSON.parse(localStorage.getItem('listBooks'));
+    
+    let notReadedBooks = allBooks.filter(book => {
+        return book.isComplete == false;
+    })
+
+    let readedBooks = allBooks.filter(book => {
+        return book.isComplete == true;
+    })
+
+    allBookCount.innerText = allBooks.length;
+    notReadedBook.innerText = notReadedBooks.length;
+    readedBook.innerText = readedBooks.length;
+
+
     finishedContainer.textContent = '';
     notFinishedContainer.textContent = '';
     finishedContainer.appendChild(addTableHeader())
