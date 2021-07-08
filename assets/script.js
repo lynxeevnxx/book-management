@@ -27,7 +27,83 @@ formSubmit.addEventListener('submit', (e) => {
 })
 
 
+
 findBtn.addEventListener('click',  filterBooks)
+
+function addTableHeader () {
+        const createTr = document.createElement('tr');
+        const titleTable = document.createElement('th')
+        const yearTable = document.createElement('th')
+        const authorTable = document.createElement('th')
+        const actionTable = document.createElement('th');
+        actionTable.setAttribute('colspan', '3');
+        titleTable.innerText = 'Judul Buku';
+        yearTable.innerText = 'Tahun Terbit';
+        authorTable.innerText = 'Penulis';
+        actionTable.innerText = 'Action';
+        createTr.appendChild(titleTable);
+        createTr.appendChild(yearTable);
+        createTr.appendChild(authorTable);
+        createTr.appendChild(actionTable);
+
+        return createTr
+}
+
+function createChildTable (book) {
+    const createTr = document.createElement('tr');
+    const titleEl = document.createElement('td');
+    const yearEl = document.createElement('td');
+    const authorEl = document.createElement('td');
+    const actionBtnElOne = document.createElement('td');
+    const actionBtnElTwo = document.createElement('td');
+    const actionBtnElThree = document.createElement('td');
+    const btnEdit = document.createElement('button');
+    const btnDelete = document.createElement('button');
+    const btnMove = document.createElement('button');
+
+
+
+    btnEdit.innerText ='Edit';
+    btnDelete.innerText = 'Delete';
+    btnMove.innerText = 'Move Book';
+
+
+    btnMove.addEventListener('click', () => {
+        let books = JSON.parse(localStorage.getItem('listBooks'));
+
+        const newBooks = () => {
+            for (newBook of books) {
+                if (newBook.id == book.id) {
+                    newBook.isComplete = !newBook.isComplete
+                   console.log(newBook, book)
+                    
+                }
+            }
+        } 
+
+        newBooks()
+        console.log(books)
+        let stringfy = JSON.stringify(books)
+        localStorage.setItem('listBooks', stringfy);
+        renderingListBooks()
+    })
+
+
+    actionBtnElOne.appendChild(btnEdit);
+    actionBtnElTwo.appendChild(btnDelete);
+    actionBtnElThree.appendChild(btnMove);  
+    titleEl.innerText = book.title;
+    yearEl.innerText = book.yearReleased;
+    authorEl.innerText = book.author;
+    createTr.appendChild(titleEl);
+    createTr.appendChild(yearEl);
+    createTr.appendChild(authorEl);
+    createTr.appendChild(actionBtnElOne);
+    createTr.appendChild(actionBtnElTwo);
+    createTr.appendChild(actionBtnElThree);
+
+    return createTr;
+}
 
 const addBooks = () => {
     let timestamp = new Date().getUTCMilliseconds();
@@ -37,7 +113,6 @@ const addBooks = () => {
     bookInfo.author = authorField.value;
     bookInfo.isComplete = isCompleteField.checked;
 
-    console.log(bookInfo);
 
     if (localStorage.getItem('listBooks') == null) {
         let listBooks = [];
@@ -53,83 +128,37 @@ const addBooks = () => {
     }
 }
 
+
+
 function filterBooks () {
         const books = JSON.parse(localStorage.getItem('listBooks'));
-
         filterTable.innerText = ''
-     
-       let filteredBooks =  books.filter(book => {
-            console.log(book)
+        filterTable.appendChild(addTableHeader());
+        let filteredBooks =  books.filter(book => {
             return book.title.includes(inputFilterField.value) == true
         })
 
         booksFounded.innerText = `Buku Yang Ditemukan : ${filteredBooks.length}`
 
         for (book of filteredBooks) {
-        const createTr = document.createElement('tr');
-        const titleEl = document.createElement('td');
-        const yearEl = document.createElement('td');
-        const authorEl = document.createElement('td');
-        const actionBtnElOne = document.createElement('td');
-        const actionBtnElTwo = document.createElement('td');
-        const actionBtnElThree = document.createElement('td');
-        const btnEdit = document.createElement('button');
-        const btnDelete = document.createElement('button');
-        const btnMove = document.createElement('button');
-        btnEdit.innerText ='Edit';
-        btnDelete.innerText = 'Delete';
-        btnMove.innerText = 'Move Book';
-        actionBtnElOne.appendChild(btnEdit);
-        actionBtnElTwo.appendChild(btnDelete);
-        actionBtnElThree.appendChild(btnMove);  
-        titleEl.innerText = book.title;
-        yearEl.innerText = book.yearReleased;
-        authorEl.innerText = book.author;
-        createTr.appendChild(titleEl);
-        createTr.appendChild(yearEl);
-        createTr.appendChild(authorEl);
-        createTr.appendChild(actionBtnElOne);
-        createTr.appendChild(actionBtnElTwo);
-        createTr.appendChild(actionBtnElThree);
-        filterTable.appendChild(createTr)
+        filterTable.appendChild(createChildTable(book))
         }
 
-        console.log(filteredBooks);
 }
 
-const renderingListBooks = () => {
+function renderingListBooks ()  {
+    finishedContainer.textContent = '';
+    notFinishedContainer.textContent = '';
+    finishedContainer.appendChild(addTableHeader())
+    notFinishedContainer.appendChild(addTableHeader())
+
     const dataBooks = JSON.parse(localStorage.getItem('listBooks'));
     for (book of dataBooks) {
-        const createTr = document.createElement('tr');
-        const titleEl = document.createElement('td');
-        const yearEl = document.createElement('td');
-        const authorEl = document.createElement('td');
-        const actionBtnElOne = document.createElement('td');
-        const actionBtnElTwo = document.createElement('td');
-        const actionBtnElThree = document.createElement('td');
-        const btnEdit = document.createElement('button');
-        const btnDelete = document.createElement('button');
-        const btnMove = document.createElement('button');
-        btnEdit.innerText ='Edit';
-        btnDelete.innerText = 'Delete';
-        btnMove.innerText = 'Move Book'
-        actionBtnElOne.appendChild(btnEdit);
-        actionBtnElTwo.appendChild(btnDelete);
-        actionBtnElThree.appendChild(btnMove);
-        titleEl.innerText = book.title;
-        yearEl.innerText = book.yearReleased;
-        authorEl.innerText = book.author;
-        createTr.appendChild(titleEl);
-        createTr.appendChild(yearEl);
-        createTr.appendChild(authorEl);
-        createTr.appendChild(actionBtnElOne);
-        createTr.appendChild(actionBtnElTwo);
-        createTr.appendChild(actionBtnElThree);
-
+        
         if (book.isComplete) {
-            finishedContainer.appendChild(createTr)
+            finishedContainer.appendChild(createChildTable(book))
         } else if (!book.isComplete) {
-            notFinishedContainer.appendChild(createTr)
+            notFinishedContainer.appendChild(createChildTable(book))
         }
     }
 }

@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Poppins';
+
 }
 
 body, header, footer, main, div, content, h2, h1, input, p, h3,h4,h5{
@@ -22,7 +23,7 @@ main {
     text-align: center;
     width: 75%;
     margin : auto auto;
-    background-color: rgb(255, 152, 152);
+    background-color: rgb(255, 152, 152) ; 
     padding: 20px;
     border-radius: 10px;
     margin :20px auto;
@@ -116,7 +117,7 @@ form {
 
 
 
-.statusBooksContainer div {
+.statusBooksContainer div, #filteredContainer {
     background-color: rgb(228, 118, 155);
     padding: 15px;
     border-radius: 10px;
