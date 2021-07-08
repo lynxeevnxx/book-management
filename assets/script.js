@@ -100,6 +100,8 @@ function createChildTable (book) {
         let stringfy = JSON.stringify(newBooks)
         localStorage.setItem('listBooks', stringfy);
         renderingListBooks()
+
+        setTimeout(() => {alert(`Buku Dengan Judul ${book.title} Berhasil Dihapus !`)},100)
         
     })
 
