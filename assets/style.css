@@ -30,6 +30,17 @@ main {
     color : white;
 }
 
+
+footer {
+    background: rgb(255, 152, 152);
+    text-align: center;
+}
+
+footer div {
+    padding : 20px;
+    color: rgb(48, 48, 48);
+}
+
 main hr {
     border : 2px solid rgb(255, 239, 239);
 }
