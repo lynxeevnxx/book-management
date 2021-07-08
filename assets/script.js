@@ -82,10 +82,23 @@ function createChildTable (book) {
         } 
 
         newBooks()
-        console.log(books)
+
         let stringfy = JSON.stringify(books)
         localStorage.setItem('listBooks', stringfy);
         renderingListBooks()
+    })
+
+    btnDelete.addEventListener('click', () => {
+        let books = JSON.parse(localStorage.getItem('listBooks'));
+
+        const newBooks = books.filter((eachBook => {
+            return eachBook.id !== book.id
+        }))
+
+        let stringfy = JSON.stringify(newBooks)
+        localStorage.setItem('listBooks', stringfy);
+        renderingListBooks()
+        
     })
 
 
