@@ -141,6 +141,12 @@ const addBooks = () => {
         localStorage.setItem('listBooks', stringfy);
 
     }
+
+    titleField.value = '';
+    yearReleasedField.value = '';
+    authorField.value = '';
+    isCompleteField.checked = false;
+    setTimeout(() => {alert('Buku Berhasil Ditambahkan...')},100)
 }
 
 
@@ -158,6 +164,10 @@ function filterBooks () {
         for (book of filteredBooks) {
         filterTable.appendChild(createChildTable(book))
         }
+
+        inputFilterField.value = '';
+
+        setTimeout(() => {alert(`${filteredBooks.length} Buku Berhasil Ditemukan!`)},100)
 
 }
 
